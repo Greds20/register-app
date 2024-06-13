@@ -1,3 +1,7 @@
+
+<pre>
+    <code> {{ dev | json }} </code>
+</pre>
 <h1>Desarrolladores Registrados</h1>
 <a routerLink="add" class="btn btn-sm btn-success mb-2">Agregar</a>
 <table class="table table-striped">
@@ -9,12 +13,11 @@
     </thead>
     <tbody>
         <tr *ngFor="let desarrollador of desarrolladores()">
-            <td>{{desarrollador.title}}</td>
-            <td>{{desarrollador.title}} {{desarrollador.id}}</td>
+            <td>{{desarrollador.alias}}</td>
+            <td>{{desarrollador.nombres}} {{desarrollador.apellidos}}</td>
             <td style="white-space: nowrap">
                 <a routerLink="" class="btn btn-sm btn-primary mr-1">Editar</a>
-                <button (click)="eliminarDev(desarrollador.id)" class="btn btn-sm btn-danger btn-delete-user">
-                    
+                <button (click)="eliminarDev(desarrollador.id_desarrollador)" class="btn btn-sm btn-danger btn-delete-user">
                     <span>Eliminar</span>
                 </button>
             </td>

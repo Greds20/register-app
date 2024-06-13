@@ -11,17 +11,6 @@ export class DesarrolladorService {
   constructor() { }
 
   getDesarrollador(){
-    return this.http.get<desarrollador[]>('https://api.escuelajs.co/api/v1/products');
-    /*
-    return [
-      {
-      id_desarrollador: 1,
-      nombres: 't',
-      apellidos: 's',
-      alias: 's',
-      estado: true
-      }
-    ];
-    */
+    return this.http.get<desarrollador[]>('/devs');
   }
 }
