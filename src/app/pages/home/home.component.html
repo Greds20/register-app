@@ -1,1 +1,28 @@
-<p>home works!</p>
+<h1>Desarrolladores Registrados</h1>
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Agregar</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 30%">Alias</th>
+            <th style="width: 30%">Nombre</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let desarrollador of desarrolladores()">
+            <td>{{desarrollador.title}}</td>
+            <td>{{desarrollador.title}} {{desarrollador.id}}</td>
+            <td style="white-space: nowrap">
+                <a routerLink="" class="btn btn-sm btn-primary mr-1">Editar</a>
+                <button (click)="eliminarDev(desarrollador.id)" class="btn btn-sm btn-danger btn-delete-user">
+                    
+                    <span>Eliminar</span>
+                </button>
+            </td>
+        </tr>
+        <tr *ngIf="!desarrolladores">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
