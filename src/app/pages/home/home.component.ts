@@ -21,10 +21,10 @@ export class HomeComponent {
   desarrolladores = signal<desarrollador[]>([]);
 
   ngOnInit(){
-    this.getItems();
+    this.getDesarrolladores();
   }
 
-  getItems(): void {
+  getDesarrolladores(): void {
     this.desarrolladorService.getDesarrollador()
     .subscribe({
       next: (desarrolladores) => {
