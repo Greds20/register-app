@@ -1,3 +1,4 @@
+//API para la conexión a la base de datos PostgreSQL
 const express = require('express');
 const app = express();
 
@@ -8,8 +9,8 @@ app.listen(port, () => {
 });
 
 const { Pool } = require('pg');
-const { isNumericLiteral } = require('typescript');
 
+//Configuración para el acceso a la base de datos
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
@@ -26,6 +27,7 @@ pool.connect((err) => {
   }
 });
 
+//Para traer los registros de la base de datos
 app.get('/devs', (req, res) => {
   pool.query('SELECT * FROM desarrollador', (err, result) => {
     if (err) {
@@ -37,6 +39,8 @@ app.get('/devs', (req, res) => {
   });
 });
 
+
+//Para insertar  registros a la base de datos
 app.use(express.json());
 app.post('/devs', (req, res) => {
   const { nickname, nombres, apellidos } = req.body;
@@ -54,6 +58,7 @@ app.post('/devs', (req, res) => {
   );
 });
 
+//Para actualizar  registros de la base de datos
 app.put('/devs/:id', (req, res) => {
   const id = req.params.id;
   const { nombres, apellidos } = req.body;
@@ -74,6 +79,7 @@ app.put('/devs/:id', (req, res) => {
 });
 
 
+//Para eliminar registros de la base de datos
 app.delete('/devs/:id', (req, res) => {
   const id  = req.params.id;
   pool.query(
@@ -92,10 +98,9 @@ app.delete('/devs/:id', (req, res) => {
   );
 });
 
-
+//Para traer un registro especifico de la base de datos
 app.get('/devs/:id', (req, res) => {
   const id  = req.params.id;
-
   pool.query("SELECT * FROM desarrollador WHERE id_desarrollador = $1", 
     [id],
     (err, result) => {

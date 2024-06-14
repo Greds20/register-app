@@ -1,3 +1,4 @@
+<!-- Cambia según la variable "isAddMode" -->
 <h1 *ngIf="isAddMode">Agregar Desarrollador</h1>
 <h1 *ngIf="!isAddMode">Editar Desarrollador</h1>
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
