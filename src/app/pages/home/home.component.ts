@@ -19,8 +19,6 @@ export class HomeComponent {
 
   private http = inject(HttpClient);
   desarrolladores = signal<desarrollador[]>([]);
-  
-  dev: any[] = [];
 
   ngOnInit(){
     this.getItems();
@@ -30,17 +28,21 @@ export class HomeComponent {
     this.desarrolladorService.getDesarrollador()
     .subscribe({
       next: (desarrolladores) => {
-        console.log(desarrolladores);
         this.desarrolladores.set(desarrolladores);
       },
       error: () => {
-
+        console.error("Error al obtener los datos");
       }
     });
   }
 
-  eliminarDev(id: number){
-    this.desarrolladores.update((desarrolladores) => 
-      desarrolladores.filter((desarrolladores, position) => position !== id));
+  eliminarDesarrollador(id: number): void {
+    this.desarrolladorService.deleteDesarrollador(id)
+    .subscribe({
+      error: () => {
+        console.error("Error al obtener los datos");
+      }
+    });
+    this.desarrolladores.update((devs) => devs.filter((devs) => devs.id_desarrollador !== id));
   }
 }

@@ -1,23 +1,19 @@
-
-<pre>
-    <code> {{ dev | json }} </code>
-</pre>
 <h1>Desarrolladores Registrados</h1>
-<a routerLink="add" class="btn btn-sm btn-success mb-2">Agregar</a>
+<a routerLink="agregar" class="btn btn-sm btn-success mb-2">Agregar</a>
 <table class="table table-striped">
     <thead>
         <tr>
-            <th style="width: 30%">Alias</th>
+            <th style="width: 30%">Nickname</th>
             <th style="width: 30%">Nombre</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let desarrollador of desarrolladores()">
-            <td>{{desarrollador.alias}}</td>
+            <td>{{desarrollador.nickname}}</td>
             <td>{{desarrollador.nombres}} {{desarrollador.apellidos}}</td>
             <td style="white-space: nowrap">
-                <a routerLink="" class="btn btn-sm btn-primary mr-1">Editar</a>
-                <button (click)="eliminarDev(desarrollador.id_desarrollador)" class="btn btn-sm btn-danger btn-delete-user">
+                <a routerLink="agregar/{{desarrollador.id_desarrollador}}" class="btn btn-sm btn-primary mr-1">Editar</a>
+                <button class="btn btn-sm btn-danger btn-delete-user" (click)="eliminarDesarrollador(desarrollador.id_desarrollador)">
                     <span>Eliminar</span>
                 </button>
             </td>

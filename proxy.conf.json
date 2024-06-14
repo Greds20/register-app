@@ -2,5 +2,9 @@
     "/devs": {
       "target": "http://localhost:3000",
       "secure": false
+    },
+    "/devs/*": {
+      "target": "http://localhost:3000",
+      "secure": false
     }
   }

@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 
 import {HomeComponent} from './pages/home/home.component';
-import { EditComponent } from './pages/edit/edit.component';
 import { AddComponent } from './pages/add/add.component';
 
 export const routes: Routes = [
@@ -10,11 +9,11 @@ export const routes: Routes = [
         component: HomeComponent
     },
     {
-        path: 'editar',
-        component: EditComponent
+        path: 'agregar',
+        component: AddComponent
     },
     {
-        path: 'agregar',
+        path: 'agregar/:id',
         component: AddComponent
     }
 ];

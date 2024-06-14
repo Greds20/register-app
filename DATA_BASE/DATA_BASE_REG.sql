@@ -1,7 +1,7 @@
 /* SENTENCIAS DML */
 
 /* INSERT */
-INSERT INTO Desarrollador (nombres, apellidos, alias) VALUES 
+INSERT INTO Desarrollador (nombres, apellidos, nickname) VALUES 
 	('Guillermo Andrés', 'Rojas Acosta', 'Guille'),
     ('Juan Manuel', 'Gómez Villa', 'Juanma'),
     ('Neil Camilo', 'Gutierrez Giménez', 'Camigut'),
@@ -49,14 +49,14 @@ INNER JOIN Aplicacion A ON C.ID_CATEGORIA = A.FK_ID_CATEGORIA
 ORDER BY Categoria;
 
 /* LEFT JOIN */
-SELECT A.nombre AS Aplicación, D.ID_DESARROLLADOR AS ID, D.alias AS Desarrollador, AD.fecha_reg AS Registro, AD.estado
+SELECT A.nombre AS Aplicación, D.ID_DESARROLLADOR AS ID, D.nickname AS Desarrollador, AD.fecha_reg AS Registro, AD.estado
 FROM Desarrollador D 
 LEFT JOIN APLICACION_DESARROLLADOR AD ON AD.FK_ID_DESARROLLADOR = D.ID_DESARROLLADOR
 LEFT JOIN Aplicacion A ON A.ID_APLICACION = AD.FK_ID_APLICACION
 ORDER BY Aplicación;
 
 /* CASE */
-SELECT D.alias, 'Tiene: ' || SUM( CASE WHEN AD.FK_ID_APLICACION IS NOT NULL THEN 1 ELSE 0 END ) AS Aplicaciones
+SELECT D.nickname, 'Tiene: ' || SUM( CASE WHEN AD.FK_ID_APLICACION IS NOT NULL THEN 1 ELSE 0 END ) AS Aplicaciones
 FROM Desarrollador D
 LEFT JOIN APLICACION_DESARROLLADOR AD ON AD.FK_ID_DESARROLLADOR = D.ID_DESARROLLADOR
-GROUP BY alias;
+GROUP BY nickname;

@@ -1,1 +1,37 @@
-<p>add works!</p>
+<h1 *ngIf="isAddMode">Agregar Desarrollador</h1>
+<h1 *ngIf="!isAddMode">Editar Desarrollador</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+        <div class="form-group col-5">
+            <label>Nickname</label>
+            <input type="text" formControlName="nickname" class="form-control" maxlength="20" [ngClass]="{ 'is-invalid': submitted && f.nickname.errors }"/>
+            <div *ngIf="submitted && f.nickname.errors" class="invalid-feedback">
+                <div *ngIf="isAddMode && f.nickname.errors.required">NICKNAME REQUERIDO</div>
+            </div>
+        </div>
+        <div class="form-group col-5">
+            <label>Nombres</label>
+            <input type="text" formControlName="nombres" class="form-control" maxlength="35" [ngClass]="{ 'is-invalid': submitted && f.nombres.errors }"/>
+            <div *ngIf="submitted && f.nombres.errors" class="text-danger">
+                <div *ngIf="f.nombres.errors.required">NOMBRE REQUERIDO</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-7">
+            <label>Apellidos</label>
+            <input type="text" formControlName="apellidos" class="form-control" maxlength="35" [ngClass]="{ 'is-invalid': submitted && f.apellidos.errors }" />
+            <div *ngIf="submitted && f.apellidos.errors" class="text-danger">
+                <div *ngIf="f.apellidos.errors.required">APELLIDOS REQUERIDO</div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="form-group">
+        <button class="btn btn-primary">
+            Save
+        </button>
+        <a routerLink="/" class="btn btn-link">Cancel</a>
+    </div>
+</form>
